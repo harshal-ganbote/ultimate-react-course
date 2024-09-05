@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-function Form() {
+function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -17,7 +18,7 @@ function Form() {
       quantity,
       packed: false,
     };
-    console.log(newItem, "[newItem]");
+    onAddItems(newItem);
 
     setDescription("");
     setQuantity(1);
@@ -46,5 +47,9 @@ function Form() {
     </form>
   );
 }
+
+Form.propTypes = {
+  onAddItems: PropTypes.func,
+};
 
 export default Form;

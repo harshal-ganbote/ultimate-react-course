@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import Button from "../../../components/Button";
 import MovieSummary from "./MovieSummary";
 import WatchedList from "./WatchedList";

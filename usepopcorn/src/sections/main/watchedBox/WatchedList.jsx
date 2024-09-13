@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import WatchedMovie from "./WatchedMovie";
 
 const WatchedList = ({ watched }) => {

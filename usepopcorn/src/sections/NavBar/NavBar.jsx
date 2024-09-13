@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import NumResult from "./NumResult";

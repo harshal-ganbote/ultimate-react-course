@@ -1,6 +1,7 @@
 import { useState } from "react";
+
 import NavBar from "./sections/NavBar/NavBar";
-import Main from "./sections/main/Main";
+import MainSection from "./sections/main/MainSection";
 
 const tempMovieData = [
   {
@@ -33,7 +34,7 @@ export default function App() {
   return (
     <>
       <NavBar movies={movies} />
-      <Main movies={movies} />
+      <MainSection movies={movies} />
     </>
   );
 }

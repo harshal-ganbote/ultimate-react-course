@@ -1,10 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import Movie from "./Movie";
 import Button from "../../../components/Button";
 
-const MoviesList = ({ movies }) => {
+const ListBox = ({ children }) => {
   const [isOpen1, setIsOpen1] = useState(true);
 
   const handleIsOpen = () => {
@@ -14,19 +13,13 @@ const MoviesList = ({ movies }) => {
   return (
     <div className="box">
       <Button onIsOpen={handleIsOpen}>{isOpen1 ? "–" : "+"}</Button>
-      {isOpen1 && (
-        <ul className="list">
-          {movies?.map((movie) => (
-            <Movie key={movie.imdbID} movie={movie} />
-          ))}
-        </ul>
-      )}
+      {isOpen1 && children}
     </div>
   );
 };
 
-MoviesList.propTypes = {
-  movies: PropTypes.array,
+ListBox.propTypes = {
+  children: PropTypes.node,
 };
 
-export default MoviesList;
+export default ListBox;

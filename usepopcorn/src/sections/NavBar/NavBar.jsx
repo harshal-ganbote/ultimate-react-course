@@ -1,21 +1,17 @@
 import PropTypes from "prop-types";
-
 import Logo from "./Logo";
-import SearchBar from "./SearchBar";
-import NumResult from "./NumResult";
 
-const NavBar = ({ movies }) => {
+const NavBar = ({ children }) => {
   return (
     <nav className="nav-bar">
       <Logo />
-      <SearchBar />
-      <NumResult movies={movies} />
+      {children}
     </nav>
   );
 };
 
 NavBar.propTypes = {
-  movies: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default NavBar;

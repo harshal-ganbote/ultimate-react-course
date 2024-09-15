@@ -2,6 +2,13 @@ import { useState } from "react";
 
 import NavBar from "./sections/NavBar/NavBar";
 import MainSection from "./sections/main/MainSection";
+import SearchBar from "./sections/NavBar/SearchBar";
+import NumResult from "./sections/NavBar/NumResult";
+import Box from "./sections/main/box/Box";
+import WatchedMovieList from "./sections/main/box/watchedMovieList/WatchedList";
+import MovieSummary from "./sections/main/box/movieSummary/MovieSummary";
+import MovieList from "./sections/main/box/movieList/MovieList";
+import StarRating from "./components/StarRating";
 
 const tempMovieData = [
   {
@@ -27,14 +34,51 @@ const tempMovieData = [
   },
 ];
 
+const tempWatchedData = [
+  {
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    runtime: 148,
+    imdbRating: 8.8,
+    userRating: 10,
+  },
+  {
+    imdbID: "tt0088763",
+    Title: "Back to the Future",
+    Year: "1985",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    runtime: 116,
+    imdbRating: 8.5,
+    userRating: 9,
+  },
+];
+
 export default function App() {
   // eslint-disable-next-line no-unused-vars
   const [movies, setMovies] = useState(tempMovieData);
+  // eslint-disable-next-line no-unused-vars
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
-      <NavBar movies={movies} />
-      <MainSection movies={movies} />
+      <StarRating maxRating={10} />
+      <NavBar>
+        <SearchBar />
+        <NumResult movies={movies} />
+      </NavBar>
+      <MainSection>
+        <Box>
+          <MovieList movies={movies} />
+        </Box>
+        <Box>
+          <MovieSummary watched={watched} />
+          <WatchedMovieList watched={watched} />
+        </Box>
+      </MainSection>
     </>
   );
 }

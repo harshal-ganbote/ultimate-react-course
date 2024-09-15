@@ -1,19 +1,11 @@
 import PropTypes from "prop-types";
 
-import MoviesList from "./moviesList/MoviesList";
-import WatchedBox from "./watchedBox/WatchedBox";
-
-const MainSection = ({ movies }) => {
-  return (
-    <main className="main">
-      <MoviesList movies={movies} />
-      <WatchedBox />
-    </main>
-  );
+const MainSection = ({ children }) => {
+  return <main className="main">{children}</main>;
 };
 
 MainSection.propTypes = {
-  movies: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default MainSection;

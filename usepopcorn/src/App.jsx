@@ -62,10 +62,21 @@ export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   // eslint-disable-next-line no-unused-vars
   const [watched, setWatched] = useState(tempWatchedData);
+  const [movieRating, setMovieRating] = useState(0);
 
   return (
     <>
-      <StarRating maxRating={10} />
+      <div>
+        <StarRating
+          maxRating={5}
+          size={24}
+          messages={["Terrible", "Bad", "Okay", "Good", "Great"]}
+          defaultRating={3}
+          onSetRating={setMovieRating}
+        />
+        <p>This movie was rated {movieRating} stars</p>
+      </div>
+
       <NavBar>
         <SearchBar />
         <NumResult movies={movies} />

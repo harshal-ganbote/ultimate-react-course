@@ -6,4 +6,7 @@ function DifferentContent() {
   );
 }
 
+// console.log(<DifferentContent />);
+// console.log(DifferentContent());
+
 export default DifferentContent;

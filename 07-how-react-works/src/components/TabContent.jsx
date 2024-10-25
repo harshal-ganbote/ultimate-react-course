@@ -5,17 +5,11 @@ function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
 
-  console.log("RENDER TabContent");
-
   function handleInc() {
     setLikes((likes) => likes + 1);
   }
 
   const handleTripleInc = () => {
-    // setLikes(likes + 1);
-    // setLikes(likes + 1);
-    // setLikes(likes + 1);
-
     setLikes((likes) => likes + 1);
     setLikes((likes) => likes + 1);
     setLikes((likes) => likes + 1);

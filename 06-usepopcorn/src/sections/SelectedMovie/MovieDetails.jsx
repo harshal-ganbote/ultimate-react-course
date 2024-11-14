@@ -8,7 +8,7 @@ const KEY = "5951abdc";
 const MovieDetails = ({
   selectedId,
   onCloseMovie,
-  onWatchedMovie,
+  onAddWatchedMovie,
   watched,
 }) => {
   const [movie, setMovie] = useState({});
@@ -42,7 +42,7 @@ const MovieDetails = ({
       userRating,
     };
 
-    onWatchedMovie(newWatchedMovie);
+    onAddWatchedMovie(newWatchedMovie);
     onCloseMovie();
   };
 
@@ -144,7 +144,7 @@ MovieDetails.propTypes = {
   selectedId: PropTypes.string,
   watched: PropTypes.array,
   onCloseMovie: PropTypes.func,
-  onWatchedMovie: PropTypes.func,
+  onAddWatchedMovie: PropTypes.func,
 };
 
 export default MovieDetails;

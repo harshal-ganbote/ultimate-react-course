@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StarRating from "../../components/StarRating";
 import Loader from "../../components/Loader";
+import { useKey } from "../../hooks/useKey";
 
 const KEY = "5951abdc";
 
@@ -14,6 +15,15 @@ const MovieDetails = ({
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(0);
+
+  const countRef = useRef(0);
+
+  useEffect(() => {
+    if (userRating) {
+      countRef.current += 1;
+    }
+  }, [userRating]);
+
   const isMovieWatched = watched.some((movie) => movie.imdbID === selectedId);
   const watchedMovieRating = watched.find(
     (movie) => movie.imdbID === selectedId
@@ -40,25 +50,14 @@ const MovieDetails = ({
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
       userRating,
+      countRatingDecisions: countRef.current,
     };
 
     onAddWatchedMovie(newWatchedMovie);
     onCloseMovie();
   };
 
-  useEffect(() => {
-    const callback = ({ code }) => {
-      if (code === "Escape") {
-        onCloseMovie();
-      }
-    };
-
-    document.addEventListener("keydown", callback);
-
-    return () => {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [onCloseMovie]);
+  useKey("Escape", onCloseMovie);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
